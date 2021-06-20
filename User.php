@@ -1,8 +1,7 @@
+
 <?php 
 
-    include_once __DIR__ .'/CreditCard.php';
-
-    class User extends CreditCard {
+  class User{
 
         public $name;
         public $surname;
@@ -10,32 +9,26 @@
         public $address;
         public $age;
         public $gender;
+        public $creditCard;
+        public $cart = array();
 
-        public function __construct($_name, $_surname, $_age){
 
-            $this -> name = $_name;
-            $this -> surname = $_surname;
-            $this -> age = $_age;
-    
+        public function __construct($_name, $_surname)
+        {
+          $this->name = $_name;
+          $this->surname = $_surname;
         }
 
-        public function insertCreditCard($_number, $_term, $_code){
-
-            $this -> number = $_number;
-            $this -> term = $_term;
-            $this -> code = $_code;
-
-
+        /* aggiunge all'user selezionato l'oggetto CreditCard */
+        public function getCreditCard($card){
+          $this->creditCard = $card;
         }
-
-        public function insertCreditCard2($_card){
-          
-            $this -> number = $_card -> number;
-            $this -> term = $_card -> term;
-            $this -> code = $_card -> code;
-
+        /* aggiunge all'user selezionato l'oggetto Product */
+        public function addProduct($prod){
+          $this->cart[] = $prod;  
         }
+        
+  }
 
-    }
 
 ?>
